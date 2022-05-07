@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { getAllUsers, replaceUsers } from '../services/userService'
+import { getAllUsers, replaceUsers } from '../models/services/userService'
 import { User } from '../models/users.model'
 
 // Obtiene todos los usuarios desde userService
@@ -56,7 +56,6 @@ export function updateUser(req: Request, res: Response){
         const userUpdated: User[] = updateNewUser(userList, index, newUser) // Se actualiza el usuario
         res.send(replaceUsers(userUpdated)) // Se reemplaza el archivo json y se responde con la lista actualizada
     } catch (error) {
-        console.error(error)
         res.status(404).send(error.message)
     }
 }
@@ -78,7 +77,15 @@ export function deleteUser(req: Request, res: Response){
 
 // Metodo que actualiza el usuario, el cual recibe el indice del usuario, el usuario nuevo y la lista de usuarios
 const updateNewUser = (userList: User[],index: number, userUpdated: User): User[] => {
-    userList[index] = userUpdated
+    userList[index] = {
+        id: userList[index].id,
+        name: userUpdated.name,
+        lastName: userUpdated.lastName,
+        age: userUpdated.age,
+        email: userUpdated.email,
+        phoneNumber: userUpdated.phoneNumber
+    } as User
+    
     return userList
 }
 

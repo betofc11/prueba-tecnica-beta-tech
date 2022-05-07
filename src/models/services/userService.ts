@@ -5,11 +5,11 @@
 */
 
 import * as path from 'path'
-import { User } from '../models/users.model';
+import { User } from '../users.model';
 const fs = require('fs');
 
 // Se define la direccion del archivo json
-const PATH = '../data/data.json'
+const PATH = '../../data/data.json'
 const userPath = path.resolve(__dirname, PATH);
 
 // Obtiene todos los usuarios del archivo json

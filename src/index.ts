@@ -1,5 +1,5 @@
 import express, {Application} from 'express';
-import routes from './routes';
+import routes from './controllers/routes';
 
 // Creamos una instancia de express
 const app: Application = express();
