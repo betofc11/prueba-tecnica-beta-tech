@@ -1,19 +1,16 @@
 import express, {Application, Request, Response} from 'express';
+import routes from './routes';
 
 const app: Application = express();
 
 const PORT: number = 3000;
 
-const users: string[] = ['John', 'Bob', 'Alice'];
+app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-});
+app.use(express.urlencoded({extended: true}));
 
-// create new user
-app.get('/users', (req: Request, res: Response) => {    
-    res.send(users);
-});
+
+app.use("/", routes());
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
