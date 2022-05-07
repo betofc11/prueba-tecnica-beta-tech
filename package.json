@@ -8,7 +8,9 @@
   },
   "author": "Luis Alberto Fonseca Cerdas",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "edit-json-file": "^1.7.0"
+  },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.31",
